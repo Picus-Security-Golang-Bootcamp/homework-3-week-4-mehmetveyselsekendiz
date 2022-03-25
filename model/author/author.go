@@ -10,13 +10,13 @@ type Author struct {
 	gorm.Model
 	ID          uint   `gorm:"primaryKey;autoIncrement"`
 	Name        string
-	Books		[]book.Book `gorm:"foreignKey:Author;references:ID"`
+	Books		[]book.Book `gorm:"foreignKey:AuthorID;references:ID"`
 }
 
 func (Author) TableName() string {
 	return "Author"
 }
 
-func (c *Author) ToString() string {
-	return fmt.Sprintf("ID : %d, Name : %s, CreatedAt : %s, UpdatedAt : %s", c.ID, c.Name, c.CreatedAt.Format("2006-01-02 15:04:05"), c.UpdatedAt.Format("2006-01-02 15:04:05"))
+func (a *Author) ToString() string {
+	return fmt.Sprintf("ID : %d, Name : %s, CreatedAt : %s", a.ID, a.Name, a.CreatedAt.Format("2006-01-02 15:04:05"))
 }

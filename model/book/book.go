@@ -3,7 +3,6 @@ package book
 import (
 	"fmt"
 	"gorm.io/gorm"
-	"github.com/mehmetveyselsekendiz/homework-3-week-4/model/author"
 )
 
 type Book struct {
@@ -12,13 +11,17 @@ type Book struct {
 	Name        string
 	Page        int
 	Stock       int
-	
+	Price       float32   `sql:"type:decimal(10,2);"`
+	StockCode   string
+	ISBN        string
+	AuthorID    int
 }
 
 func (Book) TableName() string {
 	return "Book"
 }
 
-func (c *Book) ToString() string {
-	return fmt.Sprintf("ID : %d, Name : %s, Code : %s, CountryCode : %s,CreatedAt : %s", c.ID, c.Name, c.Code, c.CountryCode, c.CreatedAt.Format("2006-01-02 15:04:05"))
+func (b *Book) ToString() string {
+	return fmt.Sprintf("ID : %d, Name : %s, Page : %d, Stock : %d, Price : %g, StockCode : %s, ISNB : %s, AuthorID : %d, CreatedAt : %s",
+	 b.ID, b.Name, b.Page, b.Stock, b.Price, b.StockCode, b.ISBN, b.AuthorID, b.CreatedAt.Format("2006-01-02 15:04:05"))
 }
