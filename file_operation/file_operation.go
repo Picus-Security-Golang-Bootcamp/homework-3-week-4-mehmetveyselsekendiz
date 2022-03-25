@@ -1,4 +1,4 @@
-package main
+package file_operation
 
 import (
 	"bufio"
@@ -8,37 +8,6 @@ import (
 )
 
 var filename = "patikadev.txt"
-
-func main(){
-//	fmt.Println("Hi")
-
-//	_, err := CreateEmptyFile()
-//	if err != nil{
-//		log.Fatal(err)
-//	}
-
-//	file, err := os.OpenFile(filename,os.O_RDWR, 8755)
-//	if err != nil{
-//		log.Fatal(err)
-//	}
-//	WriteFile(file)
-
-//err := GetFileInfo()
-//if err != nil{
-//	log.Fatal(err)
-//}
-
-//err := ReadFileLines()
-//if err != nil{
-//	log.Fatal(err)
-//}
-
-err := ReadFileWords()
-if err != nil{
-	log.Fatal(err)
-}
-
-}
 
 func CreateEmptyFile() (*os.File, error){
 	myFile, err := os.Create(filename)
